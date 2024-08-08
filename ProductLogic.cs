@@ -37,7 +37,14 @@ namespace StoreApp
 
         public DogLeash GetDogLeashByName(string name)
         {
-            return _dogLeashes[name];
+            try
+            {
+                return _dogLeashes[name];
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
         }
     }
 }

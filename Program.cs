@@ -23,7 +23,7 @@ namespace StoreApp
 
                 if (userInput == "1")
                 {
-                    Console.WriteLine("Enter the type of product (catfood or dogleash): ");
+                    Console.WriteLine("Enter the type of product (catfood, drycatfood, or dogleash): ");
                     string productType = Console.ReadLine().ToLower();
 
                     if (productType == "catfood")
@@ -41,9 +41,6 @@ namespace StoreApp
 
                         Console.WriteLine("Enter Description: ");
                         catFood.Description = Console.ReadLine();
-
-                        Console.WriteLine("Enter Weight (pounds): ");
-                        catFood.WeightPounds = double.Parse(Console.ReadLine());
 
                         Console.WriteLine("Is it Kitten Food? (true/false): ");
                         catFood.KittenFood = bool.Parse(Console.ReadLine());
@@ -76,20 +73,45 @@ namespace StoreApp
                         productLogic.AddProduct(dogLeash);
                         Console.WriteLine("Dog leash added successfully.");
                     }
+                    else if (productType == "drycatfood")
+                    {
+                        DryCatFood dryCatFood = new DryCatFood();
+
+                        Console.WriteLine("Enter Name: ");
+                        dryCatFood.Name = Console.ReadLine();
+
+                        Console.WriteLine("Enter Price: ");
+                        dryCatFood.Price = decimal.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter Quantity: ");
+                        dryCatFood.Quantity = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter Description: ");
+                        dryCatFood.Description = Console.ReadLine();
+
+                        Console.WriteLine("Enter Weight (pounds): ");
+                        dryCatFood.WeightPounds = double.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Is it Kitten Food? (true/false): ");
+                        dryCatFood.KittenFood = bool.Parse(Console.ReadLine());
+
+                        productLogic.AddProduct(dryCatFood);
+                        Console.WriteLine("Dry cat food added successfully.");
+                    }
                 }
                 else if (userInput == "2")
                 {
                     Console.WriteLine("Enter the name of the dog leash: ");
                     string name = Console.ReadLine();
 
-                    try
+                    DogLeash dogLeash = productLogic.GetDogLeashByName(name);
+                    if (dogLeash == null)
                     {
-                        DogLeash dogLeash = productLogic.GetDogLeashByName(name);
-                        Console.WriteLine(JsonSerializer.Serialize(dogLeash));
+                        Console.WriteLine("No product found with that name.");
                     }
-                    catch (KeyNotFoundException)
+                    else
                     {
-                        Console.WriteLine("Dog leash not found.");
+                        Console.WriteLine(JsonSerializer.Serialize(dogLeash));
                     }
                 }
 
