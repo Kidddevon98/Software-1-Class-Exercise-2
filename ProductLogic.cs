@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace StoreApp
@@ -36,7 +37,7 @@ namespace StoreApp
 
         public DogLeash GetDogLeashByName(string name)
         {
-            return _dogLeashes.ContainsKey(name) ? _dogLeashes[name] : null;
+            return _dogLeashes[name];
         }
     }
 }
