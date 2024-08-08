@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.Json;
 
 namespace StoreApp
@@ -21,9 +20,11 @@ namespace StoreApp
                 Console.WriteLine("Press 2 to view a dog leash by name");
                 Console.WriteLine("Type 'exit' to quit");
 
+                userInput = Console.ReadLine();
+
                 if (userInput == "1")
                 {
-                    Console.WriteLine("Enter the type of product (catfood, drycatfood, or dogleash): ");
+                    Console.WriteLine("Enter the type of product (catfood, dogleash): ");
                     string productType = Console.ReadLine().ToLower();
 
                     if (productType == "catfood")
@@ -73,31 +74,6 @@ namespace StoreApp
                         productLogic.AddProduct(dogLeash);
                         Console.WriteLine("Dog leash added successfully.");
                     }
-                    else if (productType == "drycatfood")
-                    {
-                        DryCatFood dryCatFood = new DryCatFood();
-
-                        Console.WriteLine("Enter Name: ");
-                        dryCatFood.Name = Console.ReadLine();
-
-                        Console.WriteLine("Enter Price: ");
-                        dryCatFood.Price = decimal.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Enter Quantity: ");
-                        dryCatFood.Quantity = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Enter Description: ");
-                        dryCatFood.Description = Console.ReadLine();
-
-                        Console.WriteLine("Enter Weight (pounds): ");
-                        dryCatFood.WeightPounds = double.Parse(Console.ReadLine());
-
-                        Console.WriteLine("Is it Kitten Food? (true/false): ");
-                        dryCatFood.KittenFood = bool.Parse(Console.ReadLine());
-
-                        productLogic.AddProduct(dryCatFood);
-                        Console.WriteLine("Dry cat food added successfully.");
-                    }
                 }
                 else if (userInput == "2")
                 {
@@ -114,8 +90,6 @@ namespace StoreApp
                         Console.WriteLine(JsonSerializer.Serialize(dogLeash));
                     }
                 }
-
-                userInput = Console.ReadLine();
             }
         }
     }

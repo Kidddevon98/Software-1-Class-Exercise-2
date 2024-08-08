@@ -1,34 +1,49 @@
 # Software 1 - Class Exercise 2
 
 ## Goals
+
 - Learn how to use the 2 most commonly used collections: List and Dictionary.
 
 ## Instructions
-In the last exercise we added a function to add a product to store. In this exercise, we're going to expand on that as well as add a new function to view our product list.
 
-### Steps Completed
-1. Added a new class `ProductLogic` to handle all of our product functionality.
-2. Created a private variable called `_products` of type `List<Product>` in `ProductLogic`.
-3. Implemented methods `AddProduct` and `GetAllProducts` in `ProductLogic`.
-4. Added private variables for dictionaries to store `DogLeash` and `CatFood` products.
-5. Added methods to handle product-specific logic and retrieval.
-6. Updated the `Program` class to interact with `ProductLogic`.
+In this exercise, we added a function to add a product to the store and a function to view our product list.
 
-## Usage
-- Run the application using `dotnet run`.
-- Follow the console prompts to add or view products.
 
-## Example Interaction
-```plaintext
-Press 1 to add a product
-Press 2 to view a dog leash by name
-Type 'exit' to quit
-1
-Enter the type of product (catfood or dogleash): dogleash
-Enter Name: Red Leash
-Enter Price: 19.99
-Enter Quantity: 10
-Enter Description: A strong red leash
-Enter Length (inches): 60
-Enter Material: Nylon
-Dog leash added successfully.
+## Classes
+
+### Product
+Represents a generic product with the following properties:
+- `Name`: string
+- `Price`: decimal
+- `Quantity`: int
+- `Description`: string
+
+### CatFood
+Inherits from `Product` and adds:
+- `KittenFood`: bool
+
+### DogLeash
+Inherits from `Product` and adds:
+- `LengthInches`: int
+- `Material`: string
+
+### ProductLogic
+Handles product-related functionality:
+- Stores a list of products.
+- Stores dictionaries for `DogLeash` and `CatFood`.
+- Methods to add products and retrieve them.
+
+## How to Run
+
+1. **Build the Project**:
+   - Open a terminal and navigate to the `StoreApp` directory.
+   - Run `dotnet build`.
+
+2. **Run the Application**:
+   - In the terminal, run `dotnet run`.
+
+3. **Interact with the Application**:
+   - Follow the prompts to add products or view a dog leash by name.
+   - Press `1` to add a product.
+   - Press `2` to view a dog leash by name.
+   - Type 'exit' to quit the application.
